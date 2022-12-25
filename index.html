@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Time zone dropdown project coded by Natsuki Shuko"
+    />
+    <title>Time zone dropdown</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.40/moment-timezone-with-data-1970-2030.min.js"></script>
+    <style>
+      select {
+        display: block;
+        padding: 5px 8px;
+        border-radius: 4px;
+        min-width: 200px;
+        margin: 15px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="cities"></label>
+    <select name="city" id="cities">
+      <option value="">Select a city</option>
+      <option value="Europe/Paris">🇫🇷 Paris</option>
+      <option value="Asia/Tokyo">🇯🇵 Tokyo</option>
+      <option value="Australia/Sydney">🇦🇺 Sydney</option>
+    </select>
+    <script>
+      let citiesSelect = document.querySelector("#cities");
+      citiesSelect.addEventListener("change", showSelectedCity);
+
+      function showSelectedCity(event) {
+        let timeZone = event.target.value;
+
+        let currentTime = moment()
+          .tz(timeZone)
+          .format("dddd, MMMM D, YYYY h:mm a");
+
+        if (event.target.value.length > 0) {
+          alert(`It is currently ${currentTime} in ${timeZone}`);
+        }
+      }
+    </script>
+  </body>
+</html>
