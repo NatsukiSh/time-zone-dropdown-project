@@ -30,9 +30,6 @@
       <option value="Australia/Sydney">🇦🇺 Sydney</option>
     </select>
     <script>
-      let citiesSelect = document.querySelector("#cities");
-      citiesSelect.addEventListener("change", showSelectedCity);
-
       function showSelectedCity(event) {
         let timeZone = event.target.value;
 
@@ -44,6 +41,9 @@
           alert(`It is currently ${currentTime} in ${timeZone}`);
         }
       }
+
+      let citiesSelect = document.querySelector("#cities");
+      citiesSelect.addEventListener("change", showSelectedCity);
     </script>
   </body>
 </html>
